@@ -23,14 +23,14 @@ items = [
 def home(request):
     text = f"""
     <h1>Изучаем django</h1>
-    <strong>Автор</strong>: <i>{author['last_name']} {author['first_name'][0]}.{author['middle_name'][0]}.</i>
+    <strong>Автор</strong>: <i>Сидоров Н.П.</i>
     <br><br>
     <a href="/about/">Обо мне</a> | 
     <a href="/items/">Список товаров</a>
     """
     return HttpResponse(text)
 
-# Страница "Обо мне"
+# Обо мне
 def about(request):
     html_response = f"""
     <h2>Обо мне:</h2>
@@ -44,7 +44,7 @@ def about(request):
     """
     return HttpResponse(html_response)
 
-# Подробности товара по его ID
+# ID товара
 def item_detail(request, item_id):
     found_item = None
     for item in items:
