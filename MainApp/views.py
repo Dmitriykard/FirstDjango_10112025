@@ -55,8 +55,8 @@ def item_detail(request, item_id):
 
 
 def all_items(request):
-    response_html = "<h1>Список товаров</h1><ol>"
+    response_html = "<h1>Список товаров</h1><table border='1'><tr><th>Название</th><th>Количество</th></tr>"
     for item in items:
-        response_html += f"<li><a href='/item/{item['id']}/'>{item['name']}</a></li>"
-    response_html += "</ol>"
+        response_html += f"<tr><td><a href='/item/{item['id']}/'>{item['name']}</a></td><td>{item['quantity']}</td></tr>"
+    response_html += "</table>"
     return HttpResponse(response_html)
