@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here
+# Авторские данные
 author = {
     'first_name': 'Николай',
     'middle_name': 'Петрович',
@@ -10,7 +10,7 @@ author = {
     'email': 'kolay_sidor12@mail.ru'
 }
 
-
+# Главная страница
 def home(request):
     text = """
     <h1>Изучаем django</h1>
@@ -18,7 +18,7 @@ def home(request):
     """
     return HttpResponse(text)
 
-
+# Страница "Обо мне"
 def about(request):
     html_response = f"""
     Имя: {author['first_name']}<br/>
@@ -29,16 +29,16 @@ def about(request):
     """
     return HttpResponse(html_response)
 
-
+# Список товаров
 items = [
-    {"id": 1, "name": "Кроссовки abibas"},
-    {"id": 2, "name": "Куртка кожаная"},
-    {"id": 3, "name": "Coca-cola 1 литр"},
-    {"id": 4, "name": "Картофель фри"},
-    {"id": 5, "name": "Кепка"}
+    {"id": 1, "name": "Кроссовки abibas", "quantity": 10},
+    {"id": 2, "name": "Куртка кожаная", "quantity": 5},
+    {"id": 3, "name": "Coca-cola 1 литр", "quantity": 15},
+    {"id": 4, "name": "Картофель фри", "quantity": 20},
+    {"id": 5, "name": "Кепка", "quantity": 8}
 ]
 
-
+# Подробности товара по его ID
 def item_detail(request, item_id):
     found_item = None
     for item in items:
@@ -53,7 +53,7 @@ def item_detail(request, item_id):
     else:
         return HttpResponse("Товар не найден")
 
-
+# Список всех товаров
 def all_items(request):
     response_html = "<h1>Список товаров</h1><table border='1'><tr><th>Название</th><th>Количество</th></tr>"
     for item in items:
